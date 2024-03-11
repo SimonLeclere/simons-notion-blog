@@ -15,7 +15,7 @@ export default function Text({ title }: { title: any }) {
     } = value;
 
     if (value.type === "equation") {
-      return <Tex key={value.id} math={value.equation.expression} />;
+      return <Tex key={Math.round(Math.random()*1000)} math={value.equation.expression} />;
     }
 
     return (

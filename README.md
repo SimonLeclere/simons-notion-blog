@@ -9,7 +9,7 @@ This is a statically generated Next.js site that fetches blog posts from a Notio
 ## Features
 
 - **Notion Integration:** Utilizes Notion's powerful features including images, math equations, code blocks, tables, columns, emojis, and more.
-- **Instant Updates:** Changes made in Notion are instantly reflected on the website upon publication of blog posts (content is fetched every 10 minutes, you can set the revalidate time in the /src/lib/notion.ts file).
+- **Instant Updates:** Changes made in Notion are instantly reflected on the website upon publication of blog posts (content is fetched every 2 minutes, you can set the revalidate time in the /src/lib/notion.ts file).
 - **Customizable Design:** Easily customize the design of your blog by editing Next.js components.
 
 ## Getting Started
@@ -56,7 +56,7 @@ To get started with development, follow these steps:
 ### Pros:
 
 - **Feature-Rich:** Supports most of Notion's features, making it easy to create rich content.
-- **Instant Updates:** Changes made in Notion are reflected on the website instantly (actually within 10 minutes but can be set to a lower value).
+- **Instant Updates:** Changes made in Notion are reflected on the website instantly (actually within 2 minutes but can be set to a lower value).
 - **Customizable:** Easily customize the design to fit your preferences.
 
 ### Cons:

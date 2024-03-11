@@ -4,6 +4,8 @@ import Link from "next/link";
 import Tex from "@matejmazur/react-katex";
 
 import Text from "../text";
+import LinkPreview from "@/components/bookmark";
+
 import styles from "../../styles/post.module.css";
 
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
@@ -16,7 +18,7 @@ export function renderBlock(block: any, childLevel = 0) {
     case "paragraph":
 
       if (value.rich_text.length === 0) {
-        return <Fragment key={childLevel}>
+        return <Fragment key={Math.round(Math.random()*1000)}>
 					<br />
 					{
 						block.has_children ?
@@ -27,7 +29,7 @@ export function renderBlock(block: any, childLevel = 0) {
       }
 
 			if (childLevel > 0) {
-				return <Fragment key={childLevel}>
+				return <Fragment key={Math.round(Math.random()*1000)}>
 					<br/>
 					<span style={{ paddingLeft: `${childLevel * 20}px` }}>
 						<Text title={value.rich_text} />
@@ -41,7 +43,7 @@ export function renderBlock(block: any, childLevel = 0) {
 			}
 
       return (
-        <p>
+        <p key={Math.round(Math.random()*1000)}>
           <Text title={value.rich_text} />
 					{
 						block.has_children ? 
@@ -52,28 +54,28 @@ export function renderBlock(block: any, childLevel = 0) {
       );
     case "heading_1":
       return (
-        <h1>
+        <h1 key={Math.round(Math.random()*1000)}>
           <Text title={value.rich_text} />
         </h1>
       );
     case "heading_2":
       return (
-        <h2>
+        <h2 key={Math.round(Math.random()*1000)}>
           <Text title={value.rich_text} />
         </h2>
       );
     case "heading_3":
       return (
-        <h3>
+        <h3 key={Math.round(Math.random()*1000)}>
           <Text title={value.rich_text} />
         </h3>
       );
     case "bulleted_list": {
-      return <ul>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ul>;
+      return <ul key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ul>;
     }
     case "numbered_list": {
 			const type = ['1', 'a', 'i'][childLevel % 3] as '1' | 'a' | 'i';
-      return <ol type={type}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ol>;
+      return <ol type={type} key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ol>;
     }
     case "bulleted_list_item":
     case "numbered_list_item":
@@ -87,7 +89,7 @@ export function renderBlock(block: any, childLevel = 0) {
       );
     case "to_do":
       return (
-        <div>
+        <div key={Math.round(Math.random()*1000)}>
           <label htmlFor={id}>
             <input type="checkbox" id={id} checked={value.checked} readOnly/>{" "}
             <Text title={value.rich_text} />
@@ -96,18 +98,18 @@ export function renderBlock(block: any, childLevel = 0) {
       );
     case "toggle":
       return (
-        <details>
+        <details key={Math.round(Math.random()*1000)}>
           <summary>
             <Text title={value.rich_text} />
           </summary>
           {block.children?.map((child: any) => (
-            <Fragment key={child.id}>{renderBlock(child)}</Fragment>
+            <Fragment key={child.id}>{renderBlock(child, childLevel)}</Fragment>
           ))}
         </details>
       );
     case "child_page":
       return (
-        <div className={styles.childPage}>
+        <div className={styles.childPage} key={Math.round(Math.random()*1000)}>
           <strong>{value?.title}</strong>
           {block.children.map((child: any) => renderBlock(child, childLevel + 1))}
         </div>
@@ -118,7 +120,7 @@ export function renderBlock(block: any, childLevel = 0) {
       const caption = value.caption ? value.caption[0]?.plain_text || "" : "";
 
       return (
-        <figure>
+        <figure key={Math.round(Math.random()*1000)}>
           <Image src={src} alt={caption} width={0} height={0} sizes="100vw" />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
@@ -130,7 +132,7 @@ export function renderBlock(block: any, childLevel = 0) {
       return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
     case "code":
       return (
-        <pre className={styles.pre}>
+        <pre className={styles.pre} key={Math.round(Math.random()*1000)}>
           <code className={styles.code_block} key={id}>
             {value.rich_text[0].plain_text}
           </code>
@@ -143,7 +145,7 @@ export function renderBlock(block: any, childLevel = 0) {
       const lastElementInArray = splitSourceArray[splitSourceArray.length - 1];
       const captionFile = value.caption ? value.caption[0]?.plain_text : "";
       return (
-        <figure>
+        <figure key={Math.round(Math.random()*1000)}>
           <div className={styles.file}>
             📁{" "}
             <Link href={srcFile} passHref>
@@ -156,20 +158,21 @@ export function renderBlock(block: any, childLevel = 0) {
     }
     case "bookmark": {
       const href = value.url;
-      return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer noopener"
-          className={styles.bookmark}
-        >
-          {href}
-        </a>
-      );
+
+      // if the url is a deploy to vercel button, render it
+      if (href.includes("vercel.com/new/clone")) {
+        return (
+          <Link href={href} style={{ width: 104, height: 36 }} target="_blank" key={Math.round(Math.random()*1000)}>
+            <Image src="https://vercel.com/button" alt="Deploy with Vercel" width={104} height={36} style={{ width: 104, height: 36 }} />
+          </Link>
+        );
+      }
+
+      return <LinkPreview url={href} key={Math.round(Math.random()*1000)} />;
     }
     case "table": {
       return (
-        <table className={styles.table}>
+        <table className={styles.table} key={Math.round(Math.random()*1000)}>
           <tbody>
             {block.children?.map((child: any, index: number) => {
               const RowElement =
@@ -191,13 +194,13 @@ export function renderBlock(block: any, childLevel = 0) {
     }
     case "column_list": {
       return (
-        <div className={styles.row}>
+        <div className={styles.row} key={Math.round(Math.random()*1000)}>
           {block.children.map((childBlock: any) => renderBlock(childBlock, childLevel + 1))}
         </div>
       );
     }
     case "column": {
-      return <div>{block.children.map((child: any) => renderBlock(child, childLevel + 1))}</div>;
+      return <div key={Math.round(Math.random()*1000)}>{block.children.map((child: any) => renderBlock(child, childLevel + 1))}</div>;
     }
 
     case "callout": {
