@@ -121,7 +121,7 @@ export function renderBlock(block: any, childLevel = 0) {
 
       return (
         <figure key={Math.round(Math.random()*1000)}>
-          <Image src={src} alt={caption} width={0} height={0} sizes="100vw" />
+          <Image src={src} alt={caption} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
