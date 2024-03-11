@@ -11,8 +11,8 @@ import Header from '@/components/header';
 // Get the data for each blog post
 export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
   
-  const page = await getPageFromSlug(slug);
-  const blocks = await getBlocks(page?.id);
+  const page: any = await getPageFromSlug(slug);
+  const blocks: any = await getBlocks(page?.id);
 
   return {
     props: {
@@ -30,12 +30,12 @@ export async function getStaticPaths() {
   // for actually published ones  
 
   return {
-    paths: postsTable.map((post) => `/blog/${post.properties?.Slug?.rich_text[0].text.content}`),
+    paths: postsTable.map((post: any) => `/blog/${post.properties?.Slug?.rich_text[0].text.content}`),
     fallback: true,
   }
 }
 
-export default function Page({ page, blocks }) {
+export default function Page({ page, blocks }: { page: any, blocks: any }) {
 
   if (!page || !blocks) {
     return <div />;
@@ -79,7 +79,7 @@ export default function Page({ page, blocks }) {
         </h1>
         <section>
           {
-            blocks.map((block) => (
+            blocks.map((block: any) => (
               <div key={block.id}>{renderBlock(block)}</div>
             ))
           }

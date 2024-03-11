@@ -43,12 +43,12 @@ export const getDatabase = async () => {
 
 
 
-export const getPage = async (pageId) => {
+export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
   return response;
 };
 
-export const getPageFromSlug = async (slug) => {
+export const getPageFromSlug = async (slug: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -66,7 +66,7 @@ export const getPageFromSlug = async (slug) => {
   return {};
 };
 
-export const getBlocks = async (blockID: string) => {
+export const getBlocks: any = async (blockID: string) => {
   const blockId = blockID.replaceAll('-', '');
 
   const { results } = await notion.blocks.children.list({
@@ -77,7 +77,7 @@ export const getBlocks = async (blockID: string) => {
   // Fetches all child blocks recursively
   // be mindful of rate limits if you have large amounts of nested blocks
   // See https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
-  const childBlocks = results.map(async (block) => {
+  const childBlocks = results.map(async (block: any) => {
     if (block.has_children) {
       const children = await getBlocks(block.id);
       return { ...block, children };

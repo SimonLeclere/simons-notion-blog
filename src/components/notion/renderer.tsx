@@ -6,9 +6,11 @@ import Tex from "@matejmazur/react-katex";
 import Text from "../text";
 import styles from "../../styles/post.module.css";
 
-export function renderBlock(block, childLevel = 0) {
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+
+export function renderBlock(block: any, childLevel = 0) {
   const { type, id } = block;
-  const value = block[type];
+  const value: any = block[type as keyof BlockObjectResponse];
 
   switch (type) {
     case "paragraph":
@@ -18,7 +20,7 @@ export function renderBlock(block, childLevel = 0) {
 					<br />
 					{
 						block.has_children ?
-							block.children.map((child) => renderBlock(child, childLevel + 1))
+							block.children.map((child: any) => renderBlock(child, childLevel + 1))
 						: null
 					}
 				</Fragment>
@@ -31,7 +33,7 @@ export function renderBlock(block, childLevel = 0) {
 						<Text title={value.rich_text} />
 						{
 							block.has_children ?
-								block.children.map((child) => renderBlock(child, childLevel + 1))
+								block.children.map((child: any) => renderBlock(child, childLevel + 1))
 							: null
 						}
 					</span>
@@ -43,7 +45,7 @@ export function renderBlock(block, childLevel = 0) {
           <Text title={value.rich_text} />
 					{
 						block.has_children ? 
-							block.children.map((child) => renderBlock(child, childLevel + 1))
+							block.children.map((child: any) => renderBlock(child, childLevel + 1))
 						: null
 					}
 				</p>
@@ -67,11 +69,11 @@ export function renderBlock(block, childLevel = 0) {
         </h3>
       );
     case "bulleted_list": {
-      return <ul>{value.children.map((child) => renderBlock(child, childLevel + 1))}</ul>;
+      return <ul>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ul>;
     }
     case "numbered_list": {
 			const type = ['1', 'a', 'i'][childLevel % 3] as '1' | 'a' | 'i';
-      return <ol type={type}>{value.children.map((child) => renderBlock(child, childLevel + 1))}</ol>;
+      return <ol type={type}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ol>;
     }
     case "bulleted_list_item":
     case "numbered_list_item":
@@ -80,7 +82,7 @@ export function renderBlock(block, childLevel = 0) {
         <li key={block.id}>
           <Text title={value.rich_text} />
           {/* eslint-disable-next-line no-use-before-define */}
-          {!!block.children && block.children.map((block) => renderBlock(block, childLevel + 1))}
+          {!!block.children && block.children.map((block: any) => renderBlock(block, childLevel + 1))}
         </li>
       );
     case "to_do":
@@ -98,7 +100,7 @@ export function renderBlock(block, childLevel = 0) {
           <summary>
             <Text title={value.rich_text} />
           </summary>
-          {block.children?.map((child) => (
+          {block.children?.map((child: any) => (
             <Fragment key={child.id}>{renderBlock(child)}</Fragment>
           ))}
         </details>
@@ -107,7 +109,7 @@ export function renderBlock(block, childLevel = 0) {
       return (
         <div className={styles.childPage}>
           <strong>{value?.title}</strong>
-          {block.children.map((child) => renderBlock(child, childLevel + 1))}
+          {block.children.map((child: any) => renderBlock(child, childLevel + 1))}
         </div>
       );
     case "image": {
@@ -169,12 +171,12 @@ export function renderBlock(block, childLevel = 0) {
       return (
         <table className={styles.table}>
           <tbody>
-            {block.children?.map((child, index) => {
+            {block.children?.map((child: any, index: number) => {
               const RowElement =
                 value.has_column_header && index === 0 ? "th" : "td";
               return (
                 <tr key={child.id}>
-                  {child.table_row?.cells?.map((cell, i) => (
+                  {child.table_row?.cells?.map((cell: any, i: number) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <RowElement key={`${cell.plain_text}-${i}`}>
                       <Text title={cell} />
@@ -190,12 +192,12 @@ export function renderBlock(block, childLevel = 0) {
     case "column_list": {
       return (
         <div className={styles.row}>
-          {block.children.map((childBlock) => renderBlock(childBlock, childLevel + 1))}
+          {block.children.map((childBlock: any) => renderBlock(childBlock, childLevel + 1))}
         </div>
       );
     }
     case "column": {
-      return <div>{block.children.map((child) => renderBlock(child, childLevel + 1))}</div>;
+      return <div>{block.children.map((child: any) => renderBlock(child, childLevel + 1))}</div>;
     }
 
     case "callout": {

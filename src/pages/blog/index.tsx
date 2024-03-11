@@ -42,7 +42,7 @@ export default function Index({ posts = [] }: { posts: BlogPosts }) {
         }
 
         <ol className={styles.posts}>
-          {posts.map((post) => {
+          {posts.map((post: any) => {
             const date = new Date(post.last_edited_time).toLocaleString(
               'en-US',
               {

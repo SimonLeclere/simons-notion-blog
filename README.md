@@ -46,9 +46,10 @@ To get started with development, follow these steps:
 
 1. Clone the repository.
 2. Install dependencies using npm, yarn, pnpm, or bun.
-3. Run the development server with `npm run dev`, `yarn dev`, `pnpm dev`, or `bun dev`.
-4. Open <http://localhost:3000> in your browser to view the result.
-5. Start editing files in the  `app/` folder to customize your blog.
+3. Fill a .env file with NOTION_TOKEN and NOTION_DATABASE_ID.
+4. Run the development server with `npm run dev`, `yarn dev`, `pnpm dev`, or `bun dev`.
+5. Open <http://localhost:3000> in your browser to view the result.
+6. Start editing files in the  `app/` folder to customize your blog.
 
 ## Pros and Cons of this approach
 

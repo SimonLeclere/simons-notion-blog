@@ -1,12 +1,12 @@
 import styles from '../styles/post.module.css';
 import Tex from "@matejmazur/react-katex";
 
-export default function Text({ title }) {
+export default function Text({ title }: { title: any }) {
   if (!title) {
     return null;
   }
 
-  return title.map((value) => {
+  return title.map((value: any) => {
     const {
       annotations: {
         bold, code, color, italic, strikethrough, underline,
