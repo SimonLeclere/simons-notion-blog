@@ -1,7 +1,6 @@
 import { Client } from '@notionhq/client';
-import { cache } from 'react';
 
-export const revalidate = 3600; // revalidate the data at most every hour
+export const revalidate = 10 * 60; // revalidate the data at most every ten minutes
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 

@@ -10,7 +10,7 @@ import blogStyles from '@/styles/blog.module.css';
 
 import type { BlogPosts } from '../../../types'
 
-import { getDatabase } from '@/lib/notion'
+import { getDatabase, revalidate } from '@/lib/notion'
 
 async function getBlogPosts() {
   const database = await getDatabase();
@@ -24,7 +24,7 @@ export async function getStaticProps() {
     props: {
       posts: await getBlogPosts(),
     },
-    revalidate: 10,
+    revalidate: revalidate,
   }
 }
 

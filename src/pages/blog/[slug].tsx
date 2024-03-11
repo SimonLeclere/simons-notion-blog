@@ -8,6 +8,8 @@ import { renderBlock } from '@/components/notion/renderer';
 import styles from '@/styles/post.module.css';
 import Header from '@/components/header';
 
+import { revalidate } from '@/lib/notion';
+
 // Get the data for each blog post
 export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
   
@@ -19,7 +21,7 @@ export async function getStaticProps({ params: { slug } }: { params: { slug: str
       page,
       blocks,
     },
-    revalidate: 10,
+    revalidate: revalidate,
   }
 }
 
