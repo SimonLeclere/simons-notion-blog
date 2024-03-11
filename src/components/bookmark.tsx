@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/post.module.css"
 
-const renderBookmark = ({ link, title, description, format }) => {
+const renderBookmark = ({ link, title, description, format }: { link: string, title: string, description: string, format: any }) => {
     const { bookmark_icon: icon, bookmark_cover: cover } = format
     return (
       <div className={styles.bookmark}>
@@ -63,7 +63,7 @@ export default function LinkPreview({ url }: { url: string }) {
         return renderBookmark({
             link: url,
             title: data.title,
-            description: data.description,
+            description: data.description || '',
             format: {
                 bookmark_icon: data.favicon,
                 bookmark_cover: data.imageSrc
