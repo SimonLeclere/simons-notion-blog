@@ -4,7 +4,7 @@ Welcome to my own Notion-powered blog! This project leverages Notion and Next.js
 
 ## Overview
 
-This is a statically generated Next.js site that fetches blog posts from a Notion database using the Notion API. The backend architecture is inspired by Samuel Kraft's Notion blog project, while the frontend design closely resembles that of ijjk's repository.
+This is a statically generated Next.js site that fetches blog posts from a Notion database using the Notion API. The backend architecture is inspired by [Samuel Kraft's Notion blog project](https://github.com/samuelkraft/notion-blog-nextjs), while the frontend design closely resembles that of [ijjk's repository](https://github.com/ijjk/notion-blog).
 
 ## Features
 
