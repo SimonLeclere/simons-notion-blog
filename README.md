@@ -1,6 +1,6 @@
-# Simon's Notion-Powered Blog
+# My Notion-Powered Blog
 
-Welcome to my Notion-powered blog! This project leverages Notion and Next.js to create a dynamically updated blog with ease.
+Welcome to my own Notion-powered blog! This project leverages Notion and Next.js to create a dynamically updated blog with ease.
 
 ## Overview
 
