@@ -241,7 +241,6 @@ export function renderBlock(block: any, childLevel = 0) {
 		}
 
     default: {
-			console.log(block);
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type
       })`;

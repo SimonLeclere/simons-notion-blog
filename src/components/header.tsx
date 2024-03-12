@@ -12,8 +12,6 @@ const navItems: { label: string; page?: string; link?: string }[] = [
 const Header = ({ title, favicon }: { title?: string, favicon?: string }) => {
   const { pathname } = useRouter()
 
-  console.log(title, favicon)
-
   return (
     <header className={styles.header}>
       <Head>

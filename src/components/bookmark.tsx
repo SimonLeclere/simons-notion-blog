@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
+
 import styles from "@/styles/post.module.css"
 
 const renderBookmark = ({ link, title, description, format }: { link: string, title: string, description: string, format: any }) => {
@@ -25,8 +27,11 @@ const renderBookmark = ({ link, title, description, format }: { link: string, ti
                     {description}
                   </div>
                   <div className={styles.bookmarkLinkWrapper}>
-                    <img
+                    <Image
                       src={icon}
+                      alt="bookmark icon"
+                      width={16}
+                      height={16}
                       className={styles.bookmarkLinkIcon}
                     />
                     <div className={styles.bookmarkLink}>
@@ -37,8 +42,11 @@ const renderBookmark = ({ link, title, description, format }: { link: string, ti
                 <div className={styles.bookmarkCoverWrapper1}>
                   <div className={styles.bookmarkCoverWrapper2}>
                     <div className={styles.bookmarkCoverWrapper3}>
-                      <img
+                      <Image
                         src={cover}
+                        width={240}
+                        height={105}
+                        alt="bookmark cover"
                         className={styles.bookmarkCover}
                       />
                     </div>
