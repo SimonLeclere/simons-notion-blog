@@ -7,7 +7,7 @@ export default function Index() {
 
     return (
     <>
-      <Header/>
+      <Header title={"❓ About this blog"}/>
         <div className={styles.container}>
             <h1>Simon&apos; Notion-powered blog</h1>
             <h2>

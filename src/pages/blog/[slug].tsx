@@ -45,12 +45,7 @@ export default function Page({ page, blocks }: { page: any, blocks: any }) {
 
   return (
     <div>
-      <Head>
-        <title>{page.properties.Page?.title[0].plain_text}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header/>
+      <Header title={page.properties.Page?.title[0]?.text.content} favicon={page.icon?.emoji || page.icon?.external?.url || page.icon?.file?.url}/>
 
       <article className={styles.container}>
         <h1 className={styles.name}>
