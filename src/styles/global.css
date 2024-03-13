@@ -63,7 +63,6 @@ blockquote p {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #000;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
