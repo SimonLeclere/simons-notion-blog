@@ -1,12 +1,12 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import { getDatabase, getBlocks, getPageFromSlug } from '@/lib/notion';
 import Text from '@/components/text';
 import { renderBlock } from '@/components/notion/renderer';
-import styles from '@/styles/post.module.css';
 import Header from '@/components/header';
+
+import styles from '@/styles/post.module.css';
 
 import { revalidate } from '@/lib/notion';
 
