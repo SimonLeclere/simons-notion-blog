@@ -9,6 +9,7 @@ import Header from '@/components/header';
 import styles from '@/styles/post.module.css';
 
 import { revalidate } from '@/lib/notion';
+import ViewCounter from '@/components/viewCounter';
 
 // Get the data for each blog post
 export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
@@ -74,6 +75,7 @@ export default function Page({ page, blocks }: { page: any, blocks: any }) {
           </span>
           <Text title={page.properties.Page?.title} />
         </h1>
+        <ViewCounter slug={page.properties.Slug?.rich_text[0].text.content} />
         <section>
           {
             blocks.map((block: any) => (

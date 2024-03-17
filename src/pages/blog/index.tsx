@@ -11,6 +11,7 @@ import blogStyles from '@/styles/blog.module.css';
 import type { BlogPosts } from '../../../types'
 
 import { getDatabase, revalidate } from '@/lib/notion'
+import ViewCounter from '@/components/viewCounter';
 
 async function getBlogPosts() {
   const database = await getDatabase();

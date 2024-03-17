@@ -23,6 +23,12 @@
     font-size: 20px;
     margin: 0 20px;
   }
+
+  .inlineFlex {
+    display: inline-flex;
+    gap: 4px;
+    align-items: normal;
+  }
   
   .heading {
     margin-bottom: 20px;
@@ -61,6 +67,6 @@
   
   .postDescription {
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     opacity: 0.65;
   }
