@@ -1,6 +1,7 @@
-import { kv } from '@vercel/kv';
 import type { NextApiRequest, NextApiResponse } from 'next'
- 
+
+import kv from '@/lib/kv'
+
 type ResponseData = {
   views?: number,
   message?: string
@@ -44,7 +45,7 @@ export async function incr(slug: string, req: NextApiRequest, res: NextApiRespon
     // deduplicate the ip for each slug
     const isNew = await kv.set(["deduplicate", hash, slug].join(":"), true, {
       nx: true,
-      ex: 1 * 60 * 60, // 1 hour
+      ex: 1 //1 * 60 * 60, // 1 hour
     });
 
     if (!isNew) return res.status(202).end();
