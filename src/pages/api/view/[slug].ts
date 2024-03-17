@@ -44,8 +44,8 @@ export async function incr(slug: string, req: NextApiRequest, res: NextApiRespon
 
     // deduplicate the ip for each slug
     const isNew = await kv.set(["deduplicate", hash, slug].join(":"), true, {
-      nx: true,
-      ex: 1 * 60 * 60, // 1 hour
+      nx: true, // only set if it doesn't exist
+      ex: 1 * 60 * 60, // expire after 1 hour
     });
 
     if (!isNew) return res.status(202).end();
