@@ -121,7 +121,7 @@ export function renderBlock(block: any, childLevel = 0) {
 
       return (
         <figure key={Math.round(Math.random()*1000)}>
-          <Image src={src} alt={caption} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
+          <Image unoptimized src={src} alt={caption} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
@@ -163,7 +163,7 @@ export function renderBlock(block: any, childLevel = 0) {
       if (href.includes("vercel.com/new/clone")) {
         return (
           <Link href={href} style={{ width: 104, height: 36 }} target="_blank" key={Math.round(Math.random()*1000)}>
-            <Image src="https://vercel.com/button" alt="Deploy with Vercel" width={104} height={36} style={{ width: 104, height: 36 }} />
+            <Image unoptimized src="https://vercel.com/button" alt="Deploy with Vercel" width={104} height={36} style={{ width: 104, height: 36 }} />
           </Link>
         );
       }
@@ -211,6 +211,7 @@ export function renderBlock(block: any, childLevel = 0) {
             {value.icon?.type === "emoji" && <span>{value.icon?.emoji}</span>}
             {value.icon?.type === "external" && (
               <Image
+                unoptimized
                 src={value.icon?.external?.url}
                 alt={value.icon?.external?.url}
                 width={22}
@@ -220,6 +221,7 @@ export function renderBlock(block: any, childLevel = 0) {
             )}
             {value.icon?.type === "file" && (
               <Image
+                unoptimized
                 src={value.icon?.file?.url}
                 alt={value.icon?.file?.url}
                 width={22}
