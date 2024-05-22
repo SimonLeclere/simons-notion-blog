@@ -108,6 +108,15 @@
   .row {
     display: flex;
   }
+
+  .columnList {
+    display: flex;
+    gap: 20px;
+  }
+
+  .col {
+    width: 50%;
+  }
   
   .row > div {
     flex: 1;

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactNode } from "react";
 import Link from "next/link";
 import Tex from "@matejmazur/react-katex";
 
@@ -117,11 +117,23 @@ export function renderBlock(block: any, childLevel = 0) {
     case "image": {
       const src =
         value.type === "external" ? value.external.url : value.file.url;
-      const caption = value.caption ? value.caption[0]?.plain_text || "" : "";
+      console.log(value);
+      
+      let caption: (string | ReactElement<any>)[] = [];
+
+      if (value.caption) {
+        value.caption.forEach((c: any, index: number) => {
+          if (c.href) {
+            caption.push(<a key={`caption-${index}`} href={c.href}>{c.plain_text}</a>);
+          } else {
+            caption.push(c.plain_text);
+          }
+        });
+      }
 
       return (
         <figure key={Math.round(Math.random()*1000)}>
-          <Image unoptimized src={src} alt={caption} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
+          <Image unoptimized src={src} alt={value.caption.map((x: any) => x.plain_text).join(" ")} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
@@ -193,14 +205,15 @@ export function renderBlock(block: any, childLevel = 0) {
       );
     }
     case "column_list": {
+
       return (
-        <div className={styles.row} key={Math.round(Math.random()*1000)}>
+        <div className={styles.columnList} key={Math.round(Math.random()*1000)}>
           {block.children.map((childBlock: any) => renderBlock(childBlock, childLevel + 1))}
         </div>
       );
     }
     case "column": {
-      return <div key={Math.round(Math.random()*1000)}>{block.children.map((child: any) => renderBlock(child, childLevel + 1))}</div>;
+      return <div className={styles.col} key={Math.round(Math.random()*1000)}>{block.children.map((child: any) => renderBlock(child, 0))}</div>;
     }
 
     case "callout": {
