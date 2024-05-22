@@ -27,31 +27,39 @@ const renderBookmark = ({ link, title, description, format }: { link: string, ti
                     {description}
                   </div>
                   <div className={styles.bookmarkLinkWrapper}>
-                    <Image
-                      src={icon || "https://picsum.photos/16"}
-                      alt="bookmark icon"
-                      width={16}
-                      height={16}
-                      className={styles.bookmarkLinkIcon}
-                    />
+                    {
+                      icon && (
+                        <Image
+                          src={icon}
+                          alt="bookmark icon"
+                          width={16}
+                          height={16}
+                          className={styles.bookmarkLinkIcon}
+                        />
+                      )
+                    }
                     <div className={styles.bookmarkLink}>
                       {link}
                     </div>
                   </div>
                 </div>
-                <div className={styles.bookmarkCoverWrapper1}>
-                  <div className={styles.bookmarkCoverWrapper2}>
-                    <div className={styles.bookmarkCoverWrapper3}>
-                      <Image
-                        src={cover || "https://picsum.photos/id/10/240/105"}
-                        width={240}
-                        height={105}
-                        alt="bookmark cover"
-                        className={styles.bookmarkCover}
-                      />
+                {
+                  cover && (
+                    <div className={styles.bookmarkCoverWrapper1}>
+                      <div className={styles.bookmarkCoverWrapper2}>
+                        <div className={styles.bookmarkCoverWrapper3}>
+                          <Image
+                            src={cover || "https://picsum.photos/id/10/240/105"}
+                            width={240}
+                            height={105}
+                            alt="bookmark cover"
+                            className={styles.bookmarkCover}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  )
+                }
               </div>
             </a>
           </div>
