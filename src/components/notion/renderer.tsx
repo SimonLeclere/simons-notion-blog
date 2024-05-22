@@ -117,7 +117,6 @@ export function renderBlock(block: any, childLevel = 0) {
     case "image": {
       const src =
         value.type === "external" ? value.external.url : value.file.url;
-      console.log(value);
       
       let caption: (string | ReactElement<any>)[] = [];
 
@@ -222,7 +221,7 @@ export function renderBlock(block: any, childLevel = 0) {
         <div className={styles.callout} key={id}>
           <div>
             {value.icon?.type === "emoji" && <span>{value.icon?.emoji}</span>}
-            {value.icon?.type === "external" && (
+            {(value.icon?.type === "external" && value.icon?.external.url !== null) && (
               <Image
                 unoptimized
                 src={value.icon?.external?.url}
@@ -232,7 +231,7 @@ export function renderBlock(block: any, childLevel = 0) {
                 style={{ width: 22, height: 22 }}
               />
             )}
-            {value.icon?.type === "file" && (
+            {value.icon?.type === "file" && value.icon?.file?.url && (
               <Image
                 unoptimized
                 src={value.icon?.file?.url}

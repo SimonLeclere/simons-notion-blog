@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 
-export const revalidate = 2 * 60; // revalidate the data at most every 2 minutes
+export const revalidate = 10 //2 * 60; // revalidate the data at most every 2 minutes
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 

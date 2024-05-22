@@ -28,7 +28,7 @@ const renderBookmark = ({ link, title, description, format }: { link: string, ti
                   </div>
                   <div className={styles.bookmarkLinkWrapper}>
                     <Image
-                      src={icon}
+                      src={icon || "https://picsum.photos/16"}
                       alt="bookmark icon"
                       width={16}
                       height={16}
@@ -43,7 +43,7 @@ const renderBookmark = ({ link, title, description, format }: { link: string, ti
                   <div className={styles.bookmarkCoverWrapper2}>
                     <div className={styles.bookmarkCoverWrapper3}>
                       <Image
-                        src={cover}
+                        src={cover || "https://picsum.photos/id/10/240/105"}
                         width={240}
                         height={105}
                         alt="bookmark cover"
