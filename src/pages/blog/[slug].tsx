@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { getDatabase, getBlocks, getPageFromSlug } from '@/lib/notion';
+import { cacheBlockImages, cachePageIcon } from '@/lib/imageCache';
 import Text from '@/components/text';
 import { renderBlock } from '@/components/notion/renderer';
 import Header from '@/components/header';
@@ -17,10 +18,31 @@ export async function getStaticProps({ params: { slug } }: { params: { slug: str
   const page: any = await getPageFromSlug(slug);
   const blocks: any = await getBlocks(page?.id);
 
+  // Cache images during build time
+  let imageMap = new Map<string, string>();
+  
+  if (page && blocks) {
+    try {
+      // Cache page icon
+      const pageIconMap = await cachePageIcon(page);
+      
+      // Cache images in blocks
+      const blockImageMap = await cacheBlockImages(blocks);
+      
+      // Combine the maps
+      imageMap = new Map([...pageIconMap, ...blockImageMap]);
+      
+      console.log(`Cached ${imageMap.size} images for post: ${slug}`);
+    } catch (error) {
+      console.warn('Error caching images:', error);
+    }
+  }
+
   return {
     props: {
       page,
       blocks,
+      imageMap: Object.fromEntries(imageMap), // Convert Map to object for serialization
     },
     revalidate: revalidate,
   }
@@ -38,11 +60,16 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Page({ page, blocks }: { page: any, blocks: any }) {
+export default function Page({ page, blocks, imageMap }: { page: any, blocks: any, imageMap: { [key: string]: string } }) {
 
   if (!page || !blocks) {
     return <div />;
   }
+
+  // Helper function to get local image path
+  const getImageSrc = (originalUrl: string) => {
+    return imageMap[originalUrl] || originalUrl;
+  };
 
   return (
     <div>
@@ -56,7 +83,7 @@ export default function Page({ page, blocks }: { page: any, blocks: any }) {
               page.icon?.type === "external" && (
                 <Image
                   style={{ display: "inline", width: 40, height: 40, marginRight: 8 }}
-                  src={page.icon?.external?.url}
+                  src={getImageSrc(page.icon?.external?.url)}
                   alt={page.icon?.external?.url}
                   width={40}
                   height={40}
@@ -66,7 +93,7 @@ export default function Page({ page, blocks }: { page: any, blocks: any }) {
               page.icon?.type === "file" && (
                 <Image
                   style={{ display: "inline", width: 40, height: 40, marginRight: 8 }}
-                  src={page.icon?.file?.url}
+                  src={getImageSrc(page.icon?.file?.url)}
                   alt={page.icon?.file?.url}
                   width={40}
                   height={40}
@@ -79,7 +106,7 @@ export default function Page({ page, blocks }: { page: any, blocks: any }) {
         <section>
           {
             blocks.map((block: any) => (
-              <div key={block.id}>{renderBlock(block)}</div>
+              <div key={block.id}>{renderBlock(block, 0, imageMap)}</div>
             ))
           }
           <Link href="/" className={styles.back}>

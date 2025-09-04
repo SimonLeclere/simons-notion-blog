@@ -11,25 +11,53 @@ import blogStyles from '@/styles/blog.module.css';
 import type { BlogPosts } from '../../../types'
 
 import { getDatabase, revalidate } from '@/lib/notion'
+import { cachePageIcon } from '@/lib/imageCache';
 import ViewCounter from '@/components/viewCounter';
 
 async function getBlogPosts() {
   const database = await getDatabase();
 
-  return database;
+  // Cache post icons
+  const imageMap = new Map<string, string>();
+  
+  for (const post of database) {
+    try {
+      const postIconMap = await cachePageIcon(post);
+      for (const [originalUrl, localPath] of postIconMap) {
+        imageMap.set(originalUrl, localPath);
+      }
+    } catch (error) {
+      console.warn('Error caching post icon:', error);
+    }
+  }
+
+  console.log(`Cached ${imageMap.size} post icons`);
+
+  return { 
+    posts: database, 
+    imageMap: Object.fromEntries(imageMap) 
+  };
 }
 
 
 export async function getStaticProps() {
+  const { posts, imageMap } = await getBlogPosts();
+  
   return {
     props: {
-      posts: await getBlogPosts(),
+      posts,
+      imageMap,
     },
     revalidate: revalidate,
   }
 }
 
-export default function Index({ posts = [] }: { posts: BlogPosts }) {
+export default function Index({ posts = [], imageMap = {} }: { posts: BlogPosts, imageMap: { [key: string]: string } }) {
+
+  // Helper function to get local image path
+  const getImageSrc = (originalUrl: string) => {
+    return imageMap[originalUrl] || originalUrl;
+  };
 
   return (
     <main className={styles.container}>
@@ -65,7 +93,7 @@ export default function Index({ posts = [] }: { posts: BlogPosts }) {
                     post.icon?.type === "external" && (
                     <Image
                       style={{ display: "inline", marginRight: 8 }}
-                      src={post.icon?.external?.url}
+                      src={getImageSrc(post.icon?.external?.url)}
                       alt={post.icon?.external?.url}
                       width={30}
                       height={30}
@@ -75,7 +103,7 @@ export default function Index({ posts = [] }: { posts: BlogPosts }) {
                     post.icon?.type === "file" && (
                     <Image
                       style={{ display: "inline", marginRight: 8 }}
-                      src={post.icon?.file?.url}
+                      src={getImageSrc(post.icon?.file?.url)}
                       alt={post.icon?.file?.url}
                       width={30}
                       height={30}

@@ -10,9 +10,14 @@ import styles from "../../styles/post.module.css";
 
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export function renderBlock(block: any, childLevel = 0) {
+export function renderBlock(block: any, childLevel = 0, imageMap: { [key: string]: string } = {}) {
   const { type, id } = block;
   const value: any = block[type as keyof BlockObjectResponse];
+
+  // Helper function to get local image path
+  const getImageSrc = (originalUrl: string) => {
+    return imageMap[originalUrl] || originalUrl;
+  };
 
   switch (type) {
     case "paragraph":
@@ -22,7 +27,7 @@ export function renderBlock(block: any, childLevel = 0) {
 					<br />
 					{
 						block.has_children ?
-							block.children.map((child: any) => renderBlock(child, childLevel + 1))
+							block.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))
 						: null
 					}
 				</Fragment>
@@ -35,7 +40,7 @@ export function renderBlock(block: any, childLevel = 0) {
 						<Text title={value.rich_text} />
 						{
 							block.has_children ?
-								block.children.map((child: any) => renderBlock(child, childLevel + 1))
+								block.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))
 							: null
 						}
 					</span>
@@ -47,7 +52,7 @@ export function renderBlock(block: any, childLevel = 0) {
           <Text title={value.rich_text} />
 					{
 						block.has_children ? 
-							block.children.map((child: any) => renderBlock(child, childLevel + 1))
+							block.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))
 						: null
 					}
 				</p>
@@ -71,11 +76,11 @@ export function renderBlock(block: any, childLevel = 0) {
         </h3>
       );
     case "bulleted_list": {
-      return <ul key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ul>;
+      return <ul key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))}</ul>;
     }
     case "numbered_list": {
 			const type = ['1', 'a', 'i'][childLevel % 3] as '1' | 'a' | 'i';
-      return <ol type={type} key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1))}</ol>;
+      return <ol type={type} key={Math.round(Math.random()*1000)}>{value.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))}</ol>;
     }
     case "bulleted_list_item":
     case "numbered_list_item":
@@ -84,7 +89,7 @@ export function renderBlock(block: any, childLevel = 0) {
         <li key={block.id}>
           <Text title={value.rich_text} />
           {/* eslint-disable-next-line no-use-before-define */}
-          {!!block.children && block.children.map((block: any) => renderBlock(block, childLevel + 1))}
+          {!!block.children && block.children.map((block: any) => renderBlock(block, childLevel + 1, imageMap))}
         </li>
       );
     case "to_do":
@@ -103,7 +108,7 @@ export function renderBlock(block: any, childLevel = 0) {
             <Text title={value.rich_text} />
           </summary>
           {block.children?.map((child: any) => (
-            <Fragment key={child.id}>{renderBlock(child, childLevel)}</Fragment>
+            <Fragment key={child.id}>{renderBlock(child, childLevel, imageMap)}</Fragment>
           ))}
         </details>
       );
@@ -111,7 +116,7 @@ export function renderBlock(block: any, childLevel = 0) {
       return (
         <div className={styles.childPage} key={Math.round(Math.random()*1000)}>
           <strong>{value?.title}</strong>
-          {block.children.map((child: any) => renderBlock(child, childLevel + 1))}
+          {block.children.map((child: any) => renderBlock(child, childLevel + 1, imageMap))}
         </div>
       );
     case "image": {
@@ -132,7 +137,7 @@ export function renderBlock(block: any, childLevel = 0) {
 
       return (
         <figure key={Math.round(Math.random()*1000)}>
-          <Image unoptimized src={src} alt={value.caption.map((x: any) => x.plain_text).join(" ")} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
+          <Image unoptimized src={getImageSrc(src)} alt={value.caption.map((x: any) => x.plain_text).join(" ")} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
@@ -207,12 +212,12 @@ export function renderBlock(block: any, childLevel = 0) {
 
       return (
         <div className={styles.columnList} key={Math.round(Math.random()*1000)}>
-          {block.children.map((childBlock: any) => renderBlock(childBlock, childLevel + 1))}
+          {block.children.map((childBlock: any) => renderBlock(childBlock, childLevel + 1, imageMap))}
         </div>
       );
     }
     case "column": {
-      return <div className={styles.col} key={Math.round(Math.random()*1000)}>{block.children.map((child: any) => renderBlock(child, 0))}</div>;
+      return <div className={styles.col} key={Math.round(Math.random()*1000)}>{block.children.map((child: any) => renderBlock(child, 0, imageMap))}</div>;
     }
 
     case "callout": {
@@ -224,7 +229,7 @@ export function renderBlock(block: any, childLevel = 0) {
             {(value.icon?.type === "external" && value.icon?.external.url !== null) && (
               <Image
                 unoptimized
-                src={value.icon?.external?.url}
+                src={getImageSrc(value.icon?.external?.url)}
                 alt={value.icon?.external?.url}
                 width={22}
                 height={22}
@@ -234,7 +239,7 @@ export function renderBlock(block: any, childLevel = 0) {
             {value.icon?.type === "file" && value.icon?.file?.url && (
               <Image
                 unoptimized
-                src={value.icon?.file?.url}
+                src={getImageSrc(value.icon?.file?.url)}
                 alt={value.icon?.file?.url}
                 width={22}
                 height={22}
