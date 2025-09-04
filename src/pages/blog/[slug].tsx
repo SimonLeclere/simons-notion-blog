@@ -30,7 +30,9 @@ export async function getStaticProps({ params: { slug } }: { params: { slug: str
       const blockImageMap = await cacheBlockImages(blocks);
       
       // Combine the maps
-      imageMap = new Map([...pageIconMap, ...blockImageMap]);
+      imageMap = new Map();
+      pageIconMap.forEach((value, key) => imageMap.set(key, value));
+      blockImageMap.forEach((value, key) => imageMap.set(key, value));
       
       console.log(`Cached ${imageMap.size} images for post: ${slug}`);
     } catch (error) {

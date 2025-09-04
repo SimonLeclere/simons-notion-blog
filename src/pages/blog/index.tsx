@@ -23,9 +23,9 @@ async function getBlogPosts() {
   for (const post of database) {
     try {
       const postIconMap = await cachePageIcon(post);
-      for (const [originalUrl, localPath] of postIconMap) {
+      postIconMap.forEach((localPath, originalUrl) => {
         imageMap.set(originalUrl, localPath);
-      }
+      });
     } catch (error) {
       console.warn('Error caching post icon:', error);
     }
