@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote'
 
 import Header from '@/components/header'
 import Callout from '@/components/mdx/callout'
-import { getAllPosts, getPostBySlug, type Post } from '@/lib/posts'
+import { getAllPosts, loadPostBySlug, type Post } from '@/lib/posts'
 
 import styles from '@/styles/post.module.css'
 
@@ -18,7 +18,7 @@ const mdxComponents = {
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   return {
     props: {
-      post: await getPostBySlug(params.slug),
+      post: await loadPostBySlug(params.slug),
     },
   }
 }

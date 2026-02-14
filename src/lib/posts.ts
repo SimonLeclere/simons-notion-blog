@@ -43,7 +43,7 @@ export function getAllPosts(): PostSummary[] {
     .sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
+export async function loadPostBySlug(slug: string): Promise<Post> {
   const filePath = path.join(postsDirectory, `${slug}.mdx`)
   const fileContents = fs.readFileSync(filePath, 'utf8')
 
