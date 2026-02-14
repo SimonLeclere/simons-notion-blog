@@ -1,0 +1,38 @@
+---
+title: "Exemple complet: MDX, image et composant"
+date: "2026-02-14"
+excerpt: "Un article de démonstration pour valider le rendu MDX statique et le mode sombre."
+---
+
+Ce post sert de **jeu de test fonctionnel** pour le blog statique:
+
+- rendu Markdown standard
+- image locale versionnée dans le repo
+- composant React injecté via MDX
+- bloc de code
+
+<Callout>
+Le contenu est généré statiquement à partir de ce fichier MDX, sans dépendance à Notion.
+</Callout>
+
+## Une image locale
+
+![Schéma statique MDX](/images/sample-diagram.svg)
+
+## Un tableau Markdown
+
+| Élément | Source |
+| --- | --- |
+| Article | `src/content/posts/*.mdx` |
+| Composant | `src/components/mdx/*` |
+| Image | `public/images/*` |
+
+## Un peu de code
+
+```ts
+export const stack = ['Next.js', 'MDX', 'Vercel']
+```
+
+<Callout type="warning">
+Pense à garder les métadonnées `title`, `date` et `excerpt` dans le frontmatter.
+</Callout>

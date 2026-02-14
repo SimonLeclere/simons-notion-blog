@@ -1,5 +1,4 @@
 import '../styles/global.css'
-import 'katex/dist/katex.css'
 
 import { NextPage } from 'next'
 

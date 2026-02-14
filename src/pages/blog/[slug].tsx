@@ -1,92 +1,49 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/link'
+import { MDXRemote } from 'next-mdx-remote'
 
-import { getDatabase, getBlocks, getPageFromSlug } from '@/lib/notion';
-import Text from '@/components/text';
-import { renderBlock } from '@/components/notion/renderer';
-import Header from '@/components/header';
+import Header from '@/components/header'
+import Callout from '@/components/mdx/callout'
+import { getAllPosts, getPostBySlug, type Post } from '@/lib/posts'
 
-import styles from '@/styles/post.module.css';
+import styles from '@/styles/post.module.css'
 
-import { revalidate } from '@/lib/notion';
-import ViewCounter from '@/components/viewCounter';
+type BlogPostPageProps = {
+  post: Post
+}
 
-// Get the data for each blog post
-export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
-  
-  const page: any = await getPageFromSlug(slug);
-  const blocks: any = await getBlocks(page?.id);
+const mdxComponents = {
+  Callout,
+}
 
+export async function getStaticProps({ params }: { params: { slug: string } }) {
   return {
     props: {
-      page,
-      blocks,
+      post: await getPostBySlug(params.slug),
     },
-    revalidate: revalidate,
   }
 }
 
-// Return our list of blog posts to prerender
-export async function getStaticPaths() {
-  const postsTable = await getDatabase()
-  // we fallback for any unpublished posts to save build time
-  // for actually published ones  
-
+export function getStaticPaths() {
   return {
-    paths: postsTable.map((post: any) => `/blog/${post.properties?.Slug?.rich_text[0].text.content}`),
-    fallback: true,
+    paths: getAllPosts().map((post) => ({ params: { slug: post.slug } })),
+    fallback: false,
   }
 }
 
-export default function Page({ page, blocks }: { page: any, blocks: any }) {
-
-  if (!page || !blocks) {
-    return <div />;
-  }
-
+export default function BlogPostPage({ post }: BlogPostPageProps) {
   return (
     <div>
-      <Header title={page.properties.Page?.title[0]?.text.content} favicon={page.icon?.emoji || page.icon?.external?.url || page.icon?.file?.url}/>
-
+      <Header title={post.title} />
       <article className={styles.container}>
-        <h1 className={styles.name}>
-          <span>
-            {page.icon?.type === "emoji" && <span>{page.icon?.emoji}</span>}
-            {
-              page.icon?.type === "external" && (
-                <Image
-                  style={{ display: "inline", width: 40, height: 40, marginRight: 8 }}
-                  src={page.icon?.external?.url}
-                  alt={page.icon?.external?.url}
-                  width={40}
-                  height={40}
-                />)
-            }
-            {
-              page.icon?.type === "file" && (
-                <Image
-                  style={{ display: "inline", width: 40, height: 40, marginRight: 8 }}
-                  src={page.icon?.file?.url}
-                  alt={page.icon?.file?.url}
-                  width={40}
-                  height={40}
-                />)
-            }
-          </span>
-          <Text title={page.properties.Page?.title} />
-        </h1>
-        <ViewCounter slug={page.properties.Slug?.rich_text[0].text.content} />
+        <h1 className={styles.name}>{post.title}</h1>
+        <p>{new Date(post.date).toLocaleDateString('fr-FR')}</p>
         <section>
-          {
-            blocks.map((block: any) => (
-              <div key={block.id}>{renderBlock(block)}</div>
-            ))
-          }
-          <Link href="/" className={styles.back}>
-            ← Go home
+          <MDXRemote {...post.source} components={mdxComponents} />
+          <Link href="/blog" className={styles.back}>
+            ← Retour aux articles
           </Link>
         </section>
       </article>
     </div>
-  );
+  )
 }
