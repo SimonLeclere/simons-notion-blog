@@ -11,8 +11,17 @@
   }
   
   .container figure {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 1.5rem auto;
+    max-width: 560px;
+  }
+
+  .container :global(img) {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
   }
   
   .container figcaption {
@@ -21,6 +30,14 @@
   
   .name {
     font-size: 36px;
+  }
+
+  .meta {
+    margin: 0 0 1.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accents-3);
   }
   
   .back {

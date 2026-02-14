@@ -24,7 +24,7 @@ const Header = ({ title }: { title?: string }) => {
           <li key={label}>
             {page ? (
               <Link href={page}>
-                <div className={pathname === page ? 'active' : undefined}>{label}</div>
+                <div className={pathname === page || (page === '/blog' && pathname.startsWith('/blog')) ? 'active' : undefined}>{label}</div>
               </Link>
             ) : (
               <Link href={link || ''}>

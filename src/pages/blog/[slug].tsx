@@ -36,7 +36,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Header title={post.title} />
       <article className={styles.container}>
         <h1 className={styles.name}>{post.title}</h1>
-        <p>{new Date(post.date).toLocaleDateString('fr-FR')}</p>
+        <p className={styles.meta}>{new Date(post.date).toLocaleDateString('fr-FR')}</p>
         <section>
           <MDXRemote {...post.source} components={mdxComponents} />
           <Link href="/blog" className={styles.back}>
