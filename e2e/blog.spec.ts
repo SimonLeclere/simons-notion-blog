@@ -29,7 +29,7 @@ test.describe('Blog Index Page', () => {
   test('navigation links are visible', async ({ page }) => {
     await page.goto('/blog')
     await expect(page.getByRole('link', { name: 'Blog', exact: true })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'About Me' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'About', exact: true })).toBeVisible()
     await expect(page.getByRole('link', { name: 'GitHub' })).toBeVisible()
   })
 })
@@ -74,24 +74,18 @@ test.describe('Blog Post Page', () => {
   })
 })
 
-test.describe('About Pages', () => {
+test.describe('About Page', () => {
   test('about page renders correctly', async ({ page }) => {
     await page.goto('/about')
-    await expect(page.locator('h1')).toContainText('À propos')
+    await expect(page.locator('h1')).toContainText("Simon")
     await expect(page.locator('.prose')).toBeVisible()
   })
 
-  test('about-me page renders correctly', async ({ page }) => {
-    await page.goto('/about-me')
-    await expect(page.locator('h1')).toContainText('À propos de moi')
-    await expect(page.locator('.prose')).toBeVisible()
-  })
-
-  test('about-me is accessible from navigation', async ({ page }) => {
+  test('about is accessible from navigation', async ({ page }) => {
     await page.goto('/blog')
-    await page.getByRole('link', { name: 'About Me' }).click()
-    await page.waitForURL('**/about-me')
-    await expect(page.locator('h1')).toContainText('À propos de moi')
+    await page.getByRole('link', { name: 'About', exact: true }).click()
+    await page.waitForURL('**/about')
+    await expect(page.locator('h1')).toContainText('Simon')
   })
 })
 

@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 
 const navItems = [
   { label: 'Blog', path: '/blog' },
-  { label: 'About Me', path: '/about-me' },
+  { label: 'About', path: '/about' },
   { label: 'GitHub', path: 'https://github.com/SimonLeclere/simons-notion-blog', external: true },
 ]
 

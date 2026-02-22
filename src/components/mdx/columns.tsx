@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export default function Columns({ children, count = 2, gap = 4, className }: { children: ReactNode; count?: number; gap?: string | number; className?: string }) {
   const gridCols = {

@@ -6,12 +6,6 @@ import { getAllPosts, getPostBySlug, mdxOptions } from '@/lib/posts'
 import { components } from '@/components/mdx-components'
 import type { Metadata } from 'next'
 
-type Author = {
-  name: string
-  avatar: string
-  bio: string
-}
-
 type Params = Promise<{ slug: string }>
 
 export function generateStaticParams() {
@@ -35,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   }
 }
 
-async function fetchAuthor(authorLogin: string | null, authorName: string | null): Promise<Author | null> {
+async function fetchAuthor(authorLogin: string | null, authorName: string | null) {
   if (!authorLogin) return null
   try {
     const res = await fetch(`https://api.github.com/users/${authorLogin}`, { next: { revalidate: 3600 } })
@@ -43,8 +37,8 @@ async function fetchAuthor(authorLogin: string | null, authorName: string | null
     const data = await res.json()
     return {
       name: authorName || data.name || data.login,
-      avatar: data.avatar_url,
-      bio: data.bio || 'Développeur Passionné',
+      avatar: data.avatar_url as string,
+      bio: (data.bio || 'Développeur Passionné') as string,
     }
   } catch (e) {
     console.error('Author fetch failed', e)
@@ -128,7 +122,6 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{author.bio}</p>
               </div>
               <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 transition-transform group-hover/author:scale-105">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={author.avatar}
                   alt={author.name}

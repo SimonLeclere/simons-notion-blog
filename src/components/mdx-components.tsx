@@ -29,14 +29,13 @@ const CustomImage = (props: any) => props.title ? <Figure src={props.src} captio
 
 const P = (props: any) => {
   const children = React.Children.toArray(props.children)
+  const blockTags = ['div', 'figure', 'table', 'pre', 'blockquote', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+  const blockComponents = [CustomImage, Figure, Pre, Table, Callout, Bookmark, Columns]
+
   const hasBlockChild = children.some((child: any) => {
     if (!child?.type) return false
-    // Check for HTML tag names that are block elements
-    if (typeof child.type === 'string' && ['div', 'figure', 'table', 'pre', 'blockquote', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(child.type)) return true
-    
-    // Check for our custom components that render block elements
-    if (child.type === CustomImage || child.type === Figure || child.type === Pre || child.type === Table || child.type === Callout || child.type === Bookmark || child.type === Columns) return true
-    
+    if (typeof child.type === 'string' && blockTags.includes(child.type)) return true
+    if (blockComponents.includes(child.type)) return true
     return false
   })
 

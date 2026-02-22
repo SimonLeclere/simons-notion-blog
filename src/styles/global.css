@@ -29,7 +29,7 @@ body {
   }
 }
 
-/* Rehype Pretty Code Configuration */
+/* rehype-pretty-code */
 [data-rehype-pretty-code-fragment] .line,
 [data-line] {
   padding: 0 1rem;
@@ -41,14 +41,12 @@ pre > code {
   min-width: 100%;
 }
 
-/* Highlighted line style */
 [data-rehype-pretty-code-fragment] .line--highlighted,
 [data-highlighted-line] {
   background-color: rgba(59, 130, 246, 0.15) !important;
   border-left-color: #3b82f6 !important;
 }
 
-/* Highlighted word style */
 [data-rehype-pretty-code-fragment] .word--highlighted,
 [data-highlighted-chars] {
   background-color: rgba(59, 130, 246, 0.3) !important;
@@ -56,14 +54,12 @@ pre > code {
   border-radius: 0.2rem;
 }
 
-/* Code block titles and fragments joining */
 div.flex.items-center.justify-between + pre {
   margin-top: 0 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
 
-/* Ensure table content doesn't have double borders or weird gaps */
 table {
   border-spacing: 0;
 }
@@ -72,7 +68,6 @@ tbody tr:last-child td {
   border-bottom-width: 0;
 }
 
-/* Ensure code fits */
 code {
   word-wrap: break-word;
 }
