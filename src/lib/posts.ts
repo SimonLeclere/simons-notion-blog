@@ -1,8 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
-import { serialize } from 'next-mdx-remote/serialize'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from 'rehype-pretty-code'
@@ -14,6 +12,7 @@ export type PostSummary = {
   slug: string
   title: string
   date: string
+  formattedDate: string
   excerpt: string
   icon: string | null
   author: string | null
@@ -21,8 +20,8 @@ export type PostSummary = {
   readingTime: number
 }
 
-export type Post = PostSummary & {
-  source: MDXRemoteSerializeResult
+export type PostData = PostSummary & {
+  content: string
 }
 
 const getPostData = (filename: string) => {
@@ -30,12 +29,18 @@ const getPostData = (filename: string) => {
   const fileContents = fs.readFileSync(path.join(postsDirectory, filename), 'utf8')
   const { data, content } = matter(fileContents)
   
+  const dateStr = data.date as string
+  const formattedDate = new Date(dateStr).toLocaleDateString('fr-FR', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  })
+
   return {
     slug,
     content,
     frontmatter: {
       title: data.title as string,
-      date: data.date as string,
+      date: dateStr,
+      formattedDate,
       excerpt: data.excerpt as string,
       icon: (data.icon as string) || null,
       author: (data.author as string) || null,
@@ -55,63 +60,60 @@ export function getAllPosts(): PostSummary[] {
     .sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
-export async function loadPostBySlug(slug: string): Promise<Post> {
+export function getPostBySlug(slug: string): PostData {
   const { content, frontmatter } = getPostData(`${slug}.mdx`)
-  
-  const source = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypePrettyCode, {
-          theme: 'github-dark',
-          keepBackground: true,
-          onVisitLine(node: any) {
-            if (node.children.length === 0) node.children = [{ type: 'text', value: ' ' }]
-          },
-          onVisitHighlightedLine(node: any) {
-            node.properties.className = [...(node.properties.className || []), 'line--highlighted']
-          },
-          onVisitHighlightedWord(node: any) {
-            node.properties.className = ['word--highlighted']
-          }
-        }],
-        [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
-        () => (tree: any) => {
-          const traverse = (node: any) => {
-            if (!node?.children) return
-            for (let i = 0; i < node.children.length; i++) {
-              const child = node.children[i]
-              const isTitle = child.type === 'element' && (child.properties?.['data-rehype-pretty-code-title'] !== undefined || child.properties?.['dataRehypePrettyCodeTitle'] !== undefined)
+  return { slug, ...frontmatter, content }
+}
+
+export const mdxOptions = {
+  remarkPlugins: [remarkGfm],
+  rehypePlugins: [
+    rehypeSlug,
+    [rehypePrettyCode, {
+      theme: 'github-dark',
+      keepBackground: true,
+      onVisitLine(node: any) {
+        if (node.children.length === 0) node.children = [{ type: 'text', value: ' ' }]
+      },
+      onVisitHighlightedLine(node: any) {
+        node.properties.className = [...(node.properties.className || []), 'line--highlighted']
+      },
+      onVisitHighlightedWord(node: any) {
+        node.properties.className = ['word--highlighted']
+      }
+    }],
+    [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
+    () => (tree: any) => {
+      const traverse = (node: any) => {
+        if (!node?.children) return
+        for (let i = 0; i < node.children.length; i++) {
+          const child = node.children[i]
+          const isTitle = child.type === 'element' && (child.properties?.['data-rehype-pretty-code-title'] !== undefined || child.properties?.['dataRehypePrettyCodeTitle'] !== undefined)
+          
+          if (isTitle) {
+            const titleValue = (function getText(n: any): string {
+              return n.type === 'text' ? n.value : (n.children?.map(getText).join('') || '')
+            })(child)
+
+            const preNode = node.children.slice(i + 1).find((n: any) => {
+              if (n.tagName === 'pre') return true
+              const findInnerPre = (inner: any): any => inner.tagName === 'pre' || inner.children?.find(findInnerPre)
+              return findInnerPre(n)
+            })
+
+            if (preNode) {
+              const targetPre = preNode.tagName === 'pre' ? preNode : (function findPre(n: any): any {
+                return n.tagName === 'pre' ? n : n.children?.map(findPre).find(Boolean)
+              })(preNode)
               
-              if (isTitle) {
-                const titleValue = (function getText(n: any): string {
-                  return n.type === 'text' ? n.value : (n.children?.map(getText).join('') || '')
-                })(child)
-
-                const preNode = node.children.slice(i + 1).find((n: any) => {
-                  if (n.tagName === 'pre') return true
-                  const findInnerPre = (inner: any): any => inner.tagName === 'pre' || inner.children?.find(findInnerPre)
-                  return findInnerPre(n)
-                })
-
-                if (preNode) {
-                  const targetPre = preNode.tagName === 'pre' ? preNode : (function findPre(n: any): any {
-                    return n.tagName === 'pre' ? n : n.children?.map(findPre).find(Boolean)
-                  })(preNode)
-                  
-                  if (targetPre) targetPre.properties['data-title'] = titleValue
-                  node.children.splice(i, 1)
-                  i--
-                }
-              } else traverse(child)
+              if (targetPre) targetPre.properties['data-title'] = titleValue
+              node.children.splice(i, 1)
+              i--
             }
-          }
-          traverse(tree)
+          } else traverse(child)
         }
-      ]
+      }
+      traverse(tree)
     }
-  })
-
-  return { slug, ...frontmatter, source }
+  ] as any[]
 }

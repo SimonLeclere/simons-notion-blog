@@ -1,0 +1,469 @@
+[    1596ms] [ERROR] Warning: Expected server HTML to contain a matching <%s> in <%s>.%s figure p 
+    at figure
+    at Figure (webpack-internal:///./src/components/mdx-components.tsx:147:11)
+    at img (webpack-internal:///./src/components/mdx-components.tsx:254:25)
+    at p
+    at P (webpack-internal:///./src/components/mdx-components.tsx:226:95)
+    at MDXContent (eval at <anonymous> (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js), <anonymous>:1632:8)
+    at MDXProvider (webpack-internal:///./node_modules/.pnpm/@mdx-js+react@3.1.1_@types+react@18.3.28_react@18.3.1/node_modules/@mdx-js/react/lib/index.js:75:18)
+    at MDXRemote (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js:20:22)
+    at div
+    at article
+    at div
+    at BlogPostPage (webpack-internal:///./src/pages/blog/[slug].tsx:20:11)
+    at main
+    at div
+    at Layout (webpack-internal:///./src/components/layout.tsx:12:11)
+    at MyApp (webpack-internal:///./src/pages/_app.tsx:14:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/shared/lib/router/adapters.js:80:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:6864)
+    at ReactDevOverlay (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:9247)
+    at Container (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:80:1)
+    at AppContainer (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:188:11)
+    at Root (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:412:11) @ webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:25
+[    1605ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at HTMLUnknownElement.callCallback (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at Object.invokeGuardedCallbackDev (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+    at invokeGuardedCallback (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27485:7)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1599ms] [ERROR] Warning: An error occurred during hydration. The server HTML was replaced with client content in <%s>. div 
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error @ webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:25
+[    1601ms] [ERROR] Warning: validateDOMNesting(...): %s cannot appear as a descendant of <%s>.%s <div> p 
+    at div
+    at figure
+    at Figure (webpack-internal:///./src/components/mdx-components.tsx:147:11)
+    at img (webpack-internal:///./src/components/mdx-components.tsx:254:25)
+    at p
+    at P (webpack-internal:///./src/components/mdx-components.tsx:226:95)
+    at MDXContent (eval at <anonymous> (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js), <anonymous>:1632:8)
+    at MDXProvider (webpack-internal:///./node_modules/.pnpm/@mdx-js+react@3.1.1_@types+react@18.3.28_react@18.3.1/node_modules/@mdx-js/react/lib/index.js:75:18)
+    at MDXRemote (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js:20:22)
+    at div
+    at article
+    at div
+    at BlogPostPage (webpack-internal:///./src/pages/blog/[slug].tsx:20:11)
+    at main
+    at div
+    at Layout (webpack-internal:///./src/components/layout.tsx:12:11)
+    at MyApp (webpack-internal:///./src/pages/_app.tsx:14:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/shared/lib/router/adapters.js:80:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:6864)
+    at ReactDevOverlay (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:9247)
+    at Container (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:80:1)
+    at AppContainer (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:188:11)
+    at Root (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:412:11) @ webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:25
+[    1601ms] [ERROR] Warning: validateDOMNesting(...): %s cannot appear as a descendant of <%s>.%s <figcaption> p 
+    at figcaption
+    at figure
+    at Figure (webpack-internal:///./src/components/mdx-components.tsx:147:11)
+    at img (webpack-internal:///./src/components/mdx-components.tsx:254:25)
+    at p
+    at P (webpack-internal:///./src/components/mdx-components.tsx:226:95)
+    at MDXContent (eval at <anonymous> (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js), <anonymous>:1632:8)
+    at MDXProvider (webpack-internal:///./node_modules/.pnpm/@mdx-js+react@3.1.1_@types+react@18.3.28_react@18.3.1/node_modules/@mdx-js/react/lib/index.js:75:18)
+    at MDXRemote (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js:20:22)
+    at div
+    at article
+    at div
+    at BlogPostPage (webpack-internal:///./src/pages/blog/[slug].tsx:20:11)
+    at main
+    at div
+    at Layout (webpack-internal:///./src/components/layout.tsx:12:11)
+    at MyApp (webpack-internal:///./src/pages/_app.tsx:14:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/shared/lib/router/adapters.js:80:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:6864)
+    at ReactDevOverlay (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:9247)
+    at Container (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:80:1)
+    at AppContainer (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:188:11)
+    at Root (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:412:11) @ webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:25
+[    1601ms] [ERROR] Warning: validateDOMNesting(...): %s cannot appear as a descendant of <%s>.%s <figure> p 
+    at figure
+    at Figure (webpack-internal:///./src/components/mdx-components.tsx:147:11)
+    at img (webpack-internal:///./src/components/mdx-components.tsx:254:25)
+    at p
+    at P (webpack-internal:///./src/components/mdx-components.tsx:226:95)
+    at MDXContent (eval at <anonymous> (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js), <anonymous>:1632:8)
+    at MDXProvider (webpack-internal:///./node_modules/.pnpm/@mdx-js+react@3.1.1_@types+react@18.3.28_react@18.3.1/node_modules/@mdx-js/react/lib/index.js:75:18)
+    at MDXRemote (webpack-internal:///./node_modules/.pnpm/next-mdx-remote@6.0.0_@types+react@18.3.28_react@18.3.1/node_modules/next-mdx-remote/dist/index.js:20:22)
+    at div
+    at article
+    at div
+    at BlogPostPage (webpack-internal:///./src/pages/blog/[slug].tsx:20:11)
+    at main
+    at div
+    at Layout (webpack-internal:///./src/components/layout.tsx:12:11)
+    at MyApp (webpack-internal:///./src/pages/_app.tsx:14:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/shared/lib/router/adapters.js:80:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:6864)
+    at ReactDevOverlay (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:9247)
+    at Container (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:80:1)
+    at AppContainer (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:188:11)
+    at Root (webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/index.js:412:11) @ webpack-internal:///./node_modules/.pnpm/next@14.1.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:25
+[    1607ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1608ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1609ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1610ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1610ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1610ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1610ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1610ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostText (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19954:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21655:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1611ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1611ms] Error: Hydration failed because the initial UI does not match what was rendered on the server.
+
+Warning: Expected server HTML to contain a matching <figure> in <p>.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+    at throwOnHydrationMismatch (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12507:9)
+    at tryToClaimNextHydratableInstance (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:12520:7)
+    at updateHostComponent (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19926:5)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21652:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25772:74)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)
+[    1611ms] Error: There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
+    at updateHostRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:19873:57)
+    at beginWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21649:14)
+    at beginWork$1 (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27460:14)
+    at performUnitOfWork (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26591:12)
+    at workLoopSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26500:5)
+    at renderRootSync (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26468:7)
+    at recoverFromConcurrentError (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25884:20)
+    at performConcurrentWorkOnRoot (webpack-internal:///./node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:25784:22)
+    at workLoop (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:266:34)
+    at flushWork (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:239:14)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///./node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js:533:21)

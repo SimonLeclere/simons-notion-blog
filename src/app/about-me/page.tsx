@@ -1,10 +1,15 @@
-import Header from '@/components/header'
+import Nav from '@/components/nav'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
-export default function AboutPage() {
+export const metadata: Metadata = {
+  title: 'À propos de moi',
+}
+
+export default function AboutMePage() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
-      <Header title="À propos de moi" />
+      <Nav />
       <div className="mt-16 prose prose-zinc dark:prose-invert max-w-none">
         <h1 className="text-4xl font-bold tracking-tight">À propos de moi</h1>
         <p className="lead text-xl text-gray-600 dark:text-gray-400">

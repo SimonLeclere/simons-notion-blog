@@ -1,13 +1,18 @@
 import Link from 'next/link'
-import Header from '@/components/header'
-import { getAllPosts, type PostSummary } from '@/lib/posts'
+import Nav from '@/components/nav'
+import { getAllPosts } from '@/lib/posts'
+import { Metadata } from 'next'
 
-export const getStaticProps = () => ({ props: { posts: getAllPosts() } })
+export const metadata: Metadata = {
+  title: 'Blog',
+}
 
-export default function BlogIndex({ posts }: { posts: PostSummary[] }) {
+export default function BlogIndex() {
+  const posts = getAllPosts()
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
-      <Header title="Blog" />
+      <Nav />
       <div className="mt-16 space-y-12">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Articles</h1>
         {posts.length === 0 && <p className="text-gray-500">Aucun article pour le moment.</p>}
@@ -26,7 +31,7 @@ export default function BlogIndex({ posts }: { posts: PostSummary[] }) {
                 </Link>
               </h2>
               <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 pl-1 border-l-2 border-gray-200 dark:border-zinc-700">
-                <time>{new Date(post.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                <time dateTime={post.date}>{post.formattedDate}</time>
                 <span className="flex items-center gap-1">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3">
                     <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
