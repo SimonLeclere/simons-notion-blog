@@ -48,9 +48,6 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
     devDependencies:
-      '@playwright/test':
-        specifier: ^1.58.2
-        version: 1.58.2
       '@tailwindcss/postcss':
         specifier: ^4.2.0
         version: 4.2.0
@@ -2920,6 +2917,7 @@ snapshots:
   '@playwright/test@1.58.2':
     dependencies:
       playwright: 1.58.2
+    optional: true
 
   '@rtsao/scc@1.1.0': {}
 
@@ -5051,13 +5049,15 @@ snapshots:
 
   picomatch@4.0.3: {}
 
-  playwright-core@1.58.2: {}
+  playwright-core@1.58.2:
+    optional: true
 
   playwright@1.58.2:
     dependencies:
       playwright-core: 1.58.2
     optionalDependencies:
       fsevents: 2.3.2
+    optional: true
 
   possible-typed-array-names@1.1.0: {}
 

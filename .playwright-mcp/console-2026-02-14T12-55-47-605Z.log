@@ -1,8 +1,0 @@
-[   10639ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[   10656ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[   31124ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[   61575ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[  127041ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[  182608ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[  393246ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0
-[  748841ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://simons-blog.vercel.app/api/view/kobo-root:0

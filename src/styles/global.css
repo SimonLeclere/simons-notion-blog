@@ -71,3 +71,42 @@ tbody tr:last-child td {
 code {
   word-wrap: break-word;
 }
+
+/* Cat separator */
+.cat-separator {
+  position: relative;
+  height: 62px;
+  width: 100%;
+}
+
+.cat-separator__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54px;
+  height: 1px;
+  background-color: #e5e7eb; /* gray-200 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .cat-separator__line {
+    background-color: #27272a; /* zinc-800 */
+  }
+}
+
+.cat-separator__cat {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 98px;
+  height: 62px;
+  background: url('/grisouille-pixel-sleepy-spreadsheet.png') no-repeat 0 0;
+  background-size: 1078px 62px;
+  image-rendering: pixelated;
+  animation: cat-sprite 1.2s steps(11) infinite;
+}
+
+@keyframes cat-sprite {
+  from { background-position: 0 0; }
+  to { background-position: -1078px 0; }
+}

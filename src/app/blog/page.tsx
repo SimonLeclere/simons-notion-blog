@@ -11,7 +11,7 @@ export default function BlogIndex() {
   const posts = getAllPosts()
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-12">
+    <div>
       <Nav />
       <div className="mt-16 space-y-12">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Articles</h1>
