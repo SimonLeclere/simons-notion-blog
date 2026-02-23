@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const acceptHeader = request.headers.get('accept') || ''
 
-  // Check if the request is for a blog post
+  // Log "Accept" header for every request
+  console.log(`[Middleware] ${request.method} ${pathname} - Accept: ${acceptHeader}`)
+
+  // Logic previously in proxy.ts for blog routing
   if (pathname.startsWith('/blog/')) {
     // If the URL ends with .md, rewrite to the /md route
     if (pathname.endsWith('.md')) {
@@ -13,7 +17,6 @@ export function proxy(request: NextRequest) {
     }
 
     // If the Accept header prefers markdown, rewrite to the /md route
-    const acceptHeader = request.headers.get('accept') || ''
     if (acceptHeader.includes('text/markdown')) {
       // Check if text/markdown is preferred over text/html
       const markdownIndex = acceptHeader.indexOf('text/markdown')
@@ -32,6 +35,17 @@ export function proxy(request: NextRequest) {
   return NextResponse.next()
 }
 
+// Apply this middleware to most requests, but excluding specific static assets for clarity
 export const config = {
-  matcher: '/blog/:path*',
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 }
+
