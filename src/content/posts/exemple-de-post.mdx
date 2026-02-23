@@ -1,0 +1,85 @@
+---
+title: "Exemple complet: MDX, image et composant"
+date: "2026-02-14"
+excerpt: "Un article de démonstration pour valider le rendu MDX statique et le mode sombre."
+icon: "🚀"
+author: "SimonLeclere"
+authorName: "Simon Leclere"
+devOnly: true
+---
+
+Ce post sert de **jeu de test fonctionnel** pour le blog statique:
+
+- rendu Markdown standard
+- image locale versionnée dans le repo
+- composant React injecté via MDX
+- bloc de code
+
+<Callout>
+Le contenu est généré statiquement à partir de ce fichier MDX, sans dépendance à Notion.
+</Callout>
+
+## Une image locale
+
+![Schéma statique MDX](/images/exemple-de-post/sample-diagram.svg "Architecture de rendu MDX statique dans Next.js")
+
+Vous pouvez aussi utiliser le composant `Figure` directement pour plus de contrôle:
+
+<Figure 
+  src="/images/exemple-de-post/sample-diagram.svg" 
+  caption="Une légende plus détaillée pour expliquer le flux de données." 
+/>
+
+## Un tableau Markdown
+
+| Élément | Source |
+| --- | --- |
+| Article | `src/content/posts/*.mdx` |
+| Composant | `src/components/mdx/*` |
+| Image | `public/images/*` |
+
+## Un peu de code
+
+```ts title="src/lib/posts.ts" {4}
+export const stack = ['Next.js', 'MDX', 'Vercel']
+
+function loadPosts() {
+  return getAllPosts()
+}
+```
+
+## Un exemple de code plus long
+
+```tsx title="src/components/layout.tsx"
+import Head from 'next/head'
+import { ReactNode } from 'react'
+
+type LayoutProps = {
+  children: ReactNode
+  title?: string
+}
+
+export default function Layout({ children, title = 'Mon Blog' }: LayoutProps) {
+  return (
+    <div className="relative min-h-screen">
+      <Head>
+        <title>{title}</title>
+      </Head>
+
+      {/* Grid check marks (crosshairs) */}
+      <div className="fixed top-8 left-8 w-4 h-4 border-l border-t border-gray-300 dark:border-zinc-800 pointer-events-none" />
+      <div className="fixed top-8 right-8 w-4 h-4 border-r border-t border-gray-300 dark:border-zinc-800 pointer-events-none" />
+      <div className="fixed bottom-8 left-8 w-4 h-4 border-l border-b border-gray-300 dark:border-zinc-800 pointer-events-none" />
+      <div className="fixed bottom-8 right-8 w-4 h-4 border-r border-b border-gray-300 dark:border-zinc-800 pointer-events-none" />
+
+      <main className="max-w-4xl mx-auto p-8 relative z-10 bg-white dark:bg-zinc-950 min-h-screen border-x border-dashed border-gray-100 dark:border-zinc-800">
+        {children}
+      </main>
+    </div>
+  )
+}
+```
+
+<Callout type="warning">
+Pense à garder les métadonnées `title`, `date` et `excerpt` dans le frontmatter.
+</Callout>

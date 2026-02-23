@@ -1,0 +1,153 @@
+---
+title: "Jailbreak de la liseuse Kobo Aura 2"
+date: "2024-02-14"
+excerpt: "Transformer une liseuse Kobo Aura 2 en station météo connectée et personnalisée avec YAWK et une API Next.js."
+image: "/images/kobo-root/kobo-weather-min.png"
+icon: "📚"
+author: "SimonLeclere"
+authorName: "Simon Leclere"
+---
+
+Étant un lecteur occasionnel (et un gros geek), on m’a offert il y a quelques années (en 2016 !) une liseuse afin de pouvoir me balader avec quelques centaines de livres dans un tout petit appareil de même pas 200g. Je suis retombé dessus récemment et, ne l’utilisant plus si souvent, j’ai eu envie d’en faire quelque-chose.
+
+Quelques recherches plus tard, je me rends compte que je ne suis pas le premier à avoir eu ce genre d’idées, et qu’il existe sur certains forums des communautés entières dédiées à la modification de liseuses.
+
+L’objectif est donc de jailbreak ma liseuse Kobo afin d’en faire une petite station météo. Ce projet est directement inspiré des projets de KevinShort et Matthew Petroff :
+
+<Columns>
+  <Figure 
+    src="/images/kobo-root/kobo-wifi-weather.png" 
+    caption="Kevin Short's Kobo Wifi Weather Forecast" 
+  />
+  <Figure 
+    src="/images/kobo-root/kindle-weather-display.png" 
+    caption="Matthew Petroff's Kindle weather display" 
+  />
+</Columns>
+
+Sur les modèles ci-dessus, je trouve personnellement qu’il y a un peu trop d’informations. Quand je regarde la météo au quotidien je regarde surtout la météo pour le jour même, et à la rigueur les températures des jours suivants. On pourra donc viser une interface plus simple, et faire un peu de place pour un petit ajout personnel (vous verrez !).
+
+# 1. Installation de YAWK
+
+Honnêtement, en commencant ce projet je n’avais absolument aucune idée de comment faire. Je ne savais pas comment fonctionnait une liseuse kobo, quels composants il y avait dedans, est-ce que ca utilise un OS propriétaire ou une distribution légère de linux, …
+
+En faisant quelques recherches, je suis tombé sur [YAWK](https://github.com/brunolalb/yawk/), un projet ressemblant beaucoup à ce que je voulais faire mais beaucoup plus récent que les projets présentés précédemment !
+
+La première étape évidente est donc de l’installer, comme ca je saurais si les techniques utilisées fonctionnent sur mon modèle de liseuse. Pour ca, la documentation de YAWK est plutôt claire, je vais résumer rapidement le processus.
+
+### 1. Réinitialiser la liseuse aux paramètres d’usine.
+Cette étape est optionnelle mais elle permet de partir sur une base saine et surtout de s’assurer que la liseuse aura assez d’espace de stockage pour la suite. Si vous avez des ebooks que vous souhaitez garder pensez à faire une sauvegarde avant !
+
+### 2. Installer [NiLuJe's Stuff](https://www.mobileread.com/forums/showthread.php?t=254214) sur la liseuse
+NiLuJe est un acteur important du modding de liseuses et est très actif sur le site [MobileRead](https://www.mobileread.com/). Il a notamment développé [FbInk](https://github.com/NiLuJe/FBInk), un outil permettant de dessiner des formes et du texte simplement sur des écrans à encre, et a publié plusieurs tutoriels pour jailbreak des liseuses kobo et kindle.
+
+Ici, je vais utiliser un package d’outils nommé “Kobo-stuff” qu’il a créé pour modder simplement des liseuses Kobo.
+
+Des liens à jour du package peuvent être trouvés dans ce thread :
+
+<Bookmark 
+  title="Aura H2O Yet another telnet/sshd & misc tools package... - MobileRead Forums"
+  description="Kobo Developer's Corner - Tutorials and tools for modding Kobo e-readers."
+  url="https://www.mobileread.com/forums/showthread.php?t=254214"
+  image="https://www.mobileread.com/forums/images/misc/mobile_read_logo_v2.png"
+/>
+
+Pour l’installer sur la liseuse, rien de plus simple ! Il se trouve que le fonctionnement des liseuses kobo est un peu bête : au lancement, si un dossier compressé nommé `KoboRoot.tgz` est présent à la racine de la liseuse, alors un processus d’update se lance.
+
+Si tout se passe bien, la liseuse redémarre normalement et rien ne semble avoir changé.
+
+### 3. Installation de YAWK
+Pour cette étape il est nécessaire d’avoir un client FTP comme Filezilla et un client Telnet.
+
+Je commence par connecter la liseuse au même wifi que mon pc, puis je récupère l’adresse IP de ma liseuse dans **paramètres > Informations sur l’appareil > Adresse IP**.
+
+Si l’étape 2 s’est bien passée, on devrait pouvoir se connecter à la liseuse à distance. Avec Filezilla, je crée un répertoire `.apps/yawk` et je copie tout le contenu du repo de YAWK dedans.
+
+<Callout type="warning">
+  **Attention !** Si vous êtes sous Windows, vos fichiers ont probablement des fins de ligne au format CRLF, hors Linux ne supporte que les fins de lignes LF. Avant de copier les fichiers, je les ai convertis avec l’outil dos2unix.
+</Callout>
+
+Ensuite j’ouvre une session telnet avec l’ip récupérée précédemment et je tape les commandes suivantes :
+
+*   `tmux new -s kobo update-kobostuff Python` pour installer python3
+*   `cd /mnt/onboard/.apps/yawk` pour naviguer jusqu’au répertoire de YAWK
+*   `sh install.sh` pour lancer le script d’installation de YAWK
+
+Le script d’installation demande une clé d’api [OpenWeatherMap](https://openweathermap.org/) et l’id de la ville dont on souhaite surveiller la météo.
+
+<Bookmark 
+  title="Current weather and forecast - OpenWeatherMap"
+  description="Access global weather data, including current, forecast, and historical information via clean APIs."
+  url="https://openweathermap.org/"
+  image="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png"
+/>
+
+A la fin du script, la liseuse redémarre et…
+
+<Figure 
+  src="/images/kobo-root/test-result.png" 
+  caption="Premier test concluant : l'interface s'affiche correctement sur la liseuse."
+  width="70%"
+  align="center"
+/>
+
+Tout fonctionne !
+
+# 2. Personnalisation de l’interface
+
+Maintenant que je sais qu’il est possible d’afficher du contenu arbitraire sur l’écran de ma liseuse et que je sais plus ou moins comment le faire, je peux expérimenter un peu et implémenter mes propres features :)
+
+Pour commencer, je vais réduire un peu la quantité d’informations affichée à l’écran. Pour ca, je modifie les fichiers `weather.py` et `yawk.py` et j’arrive rapidement à un résultat satisfaisant :
+
+<Figure 
+  src="/images/kobo-root/kobo-weather-min.png" 
+  caption="Au lieu d’afficher les prédictions météo sur 5 jours, j’affiche maintenant des infos détaillées pour la météo du jour, et seulement la température et l’icône indiquant le temps pour les 3 prochains jours." 
+  width="70%"
+  align="center"
+/>
+
+Les plus malins auront remarqué le grand espace vide en bas de l’écran. Cette place pourrait me servir à loger un gros widget pour afficher à peu près n’importe quoi. J’ai plusieurs idées d’ailleurs :
+
+*   **État de ma domotique** : quelles lumières sont allumées ou éteintes, état de la batterie de mon casque, mon téléphone et mon pc, suivi de ma consommation électrique…
+*   **Dernières notifications** manquées
+*   **Photos aléatoires** parmi mes préférées (même si l’écran est en noir et blanc)
+*   **To-do list**
+*   **Prochains évènements** de mon calendrier
+*   …
+
+En l’occurrence, ma copine m’a suggéré d’intégrer à l’interface un petit cadre pour un message qu’elle pourrait personnaliser. Ça me semble être une bonne idée et ça ne demande pas trop de temps à faire donc je me lance !
+
+La solution la plus simple et évidente, c’est coder une petite API toute simple avec laquelle la liseuse pourra interagir, et un site pour écrire le message.
+
+<Figure 
+  src="/images/kobo-root/architecture.png" 
+  caption="Architecture du projet : une API Next.js fait le lien entre l'interface de gestion et la liseuse."
+  width="70%"
+  align="center"
+/>
+
+Pour ça je me tourne naturellement vers ma stack habituelle : Next.js et Vercel. Ça me permet de développer rapidement à la fois le site et l’api, et de l’héberger en seulement un clic gratuitement. De plus, grâce au service KV Storage de Vercel pas besoin d’héberger une grosse base de donnée !
+
+Tant que j’y suis pour garder un historique des messages, je setup un webhook simple vers un salon discord.
+
+Voilà le résultat final :
+
+<Figure 
+  src="/images/kobo-root/discord-notification.png" 
+  caption="Mini-site permettant d’écrire un message personnalisé"
+  width="70%"
+  align="center"
+/>
+
+Maintenant, plus qu’à développer l’interface sur la liseuse. Pour ça, je prototype rapidement le design sur Photoshop, j’exporte tout ce qui est statique dans un fichier PNG et je mesure l’emplacement du texte. Pour éviter que le texte ne dépasse de l’écran, j’écris une fonction qui ajoute des retours à la ligne automatiquement.
+
+Je transfère tout sur la liseuse, je me fais encore avoir à cause des formats de retour à la ligne, et après quelques galères, j’obtiens le résultat suivant :
+
+<Figure 
+  src="/images/kobo-root/final-result.png" 
+  caption="Résultat final : la liseuse affiche désormais la météo et mes messages personnalisés."
+  width="70%"
+  align="center"
+/>
+
+Un projet rondement mené :)
