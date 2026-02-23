@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 </p>
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{author.bio}</p>
               </div>
-              <div className="h-12 w-12 sm:h-16 sm:w-16 shrink-0 overflow-hidden rounded-full bg-gray-100 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 transition-transform group-hover/author:scale-105">
+              <div className="h-12 w-12 sm:h-16 sm:w-16 shrink-0 overflow-hidden rounded-full bg-gray-100 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 transition-transform">
                 <img
                   src={author.avatar}
                   alt={author.name}

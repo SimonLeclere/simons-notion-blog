@@ -30,7 +30,7 @@ export default function BlogIndex() {
                   <span>{post.title}</span>
                 </Link>
               </h2>
-              <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 pl-1 border-l-2 border-gray-200 dark:border-zinc-700">
+              <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 pl-2 border-l-2 border-gray-200 dark:border-zinc-700">
                 <time dateTime={post.date}>{post.formattedDate}</time>
                 <span className="flex items-center gap-1">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3">
