@@ -18,6 +18,8 @@ export type PostSummary = {
   author: string | null
   authorName: string | null
   readingTime: number
+  draft: boolean
+  devOnly: boolean
 }
 
 export type PostData = PostSummary & {
@@ -46,8 +48,16 @@ const getPostData = (filename: string) => {
       author: (data.author as string) || null,
       authorName: (data.authorName as string) || null,
       readingTime: Math.ceil(content.split(/\s+/).length / 200),
+      draft: (data.draft as boolean) || false,
+      devOnly: (data.devOnly as boolean) || false,
     }
   }
+}
+
+const isPostVisible = (frontmatter: { draft: boolean; devOnly: boolean }) => {
+  if (frontmatter.draft) return false
+  if (frontmatter.devOnly && process.env.NODE_ENV !== 'development') return false
+  return true
 }
 
 export function getAllPosts(): PostSummary[] {
@@ -57,11 +67,15 @@ export function getAllPosts(): PostSummary[] {
       const { slug, frontmatter } = getPostData(f)
       return { slug, ...frontmatter }
     })
+    .filter(p => isPostVisible(p))
     .sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
 export function getPostBySlug(slug: string): PostData {
   const { content, frontmatter } = getPostData(`${slug}.mdx`)
+  if (!isPostVisible(frontmatter)) {
+    throw new Error(`Post "${slug}" is not available`)
+  }
   return { slug, ...frontmatter, content }
 }
 
