@@ -1,55 +1,56 @@
-# Simon's static MDX blog
+# Simon's Static MDX Blog
 
-Blog Next.js statique avec contenu versionné dans ce dépôt.
+A minimal blog using Next.js and MDX. Posts live as .mdx files in the repo—no CMS required.
 
-## Stack
+---
 
-- Next.js (pages router)
-- MDX via `next-mdx-remote`
-- Génération statique à chaque build Vercel
+## Features
 
-## Où écrire les articles ?
+- Markdown/MDX posts with frontmatter
+- Custom MDX components (e.g. callouts)
+- Static generation and Vercel‑friendly
+- Built‑in sitemap and RSS feed
+- Content negotiation (HTML or Markdown based on Accept header, useful for agents)
 
-Créez des fichiers `.mdx` dans `src/content/posts`.
+---
 
-Exemple de frontmatter requis :
+## Quick start
+
+```bash
+npm ci      # or pnpm install
+npm run dev  # open http://localhost:3000
+```
+
+---
+
+## Writing posts
+
+Create `.mdx` files in `src/content/posts` with frontmatter:
 
 ```md
 ---
-title: "Mon article"
+title: "My Post"
 date: "2026-02-14"
-excerpt: "Résumé court pour la liste des posts"
+excerpt: "Short summary."
 ---
 ```
 
-## Composants MDX
-
-Un composant d'exemple est fourni : `Callout` (`src/components/mdx/callout.tsx`).
-Il est disponible directement dans les posts MDX :
+Use any MDX components from `src/components/mdx`:
 
 ```mdx
-<Callout>Un encart personnalisé dans l'article.</Callout>
+<Callout>Example</Callout>
 ```
+
+---
 
 ## Images
 
-Placez vos assets dans `public/images` puis référencez-les dans le MDX :
+Put assets in `public/images` and reference them:
 
 ```md
-![Description](/images/mon-image.png)
+![Alt](/images/pic.png)
 ```
 
-## Développement local
+---
 
-```bash
-npm ci
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-Vercel reconstruira automatiquement le site à chaque commit.
+Happy writing!
