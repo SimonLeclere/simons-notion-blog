@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/posts'
 export async function GET() {
   const posts = getAllPosts()
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://simonleclere.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
 
   const markdown = [
     '# Sitemap',

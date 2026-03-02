@@ -19,5 +19,23 @@ const nextConfig = {
             }
         ]
     },
+
+    async headers() {
+        return [
+            {
+                source: "/feed.xml",
+                headers: [
+                    {
+                        key: "Access-Control-Allow-Origin",
+                        value: "*",
+                    },
+                    {
+                        key: "Access-Control-Allow-Methods",
+                        value: "GET, HEAD, OPTIONS",
+                    },
+                ],
+            },
+        ];
+    },
 };
 export default nextConfig;
